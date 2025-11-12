@@ -1,12 +1,17 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 interface PlayersState {
   value: number | null
   updatedAt: number | null
 }
 
+const PLAYERS_ENDPOINT =
+  import.meta.env.VITE_PLAYERS_ENDPOINT?.trim() || '/api/players'
+
 export function usePlayersOnline() {
   const [state, setState] = useState<PlayersState>({ value: null, updatedAt: null })
+
+  const endpoint = useMemo(() => PLAYERS_ENDPOINT, [])
 
   useEffect(() => {
     let active = true
@@ -16,7 +21,7 @@ export function usePlayersOnline() {
       controller?.abort()
       controller = new AbortController()
       try {
-        const response = await fetch('/api/players', { signal: controller.signal })
+        const response = await fetch(endpoint, { signal: controller.signal })
         if (!response.ok) throw new Error('Request failed')
         const data = await response.json()
         if (active) {
@@ -43,7 +48,7 @@ export function usePlayersOnline() {
       controller?.abort()
       window.clearInterval(interval)
     }
-  }, [])
+  }, [endpoint])
 
   return state
 }
