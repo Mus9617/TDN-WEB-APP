@@ -2,21 +2,23 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Tilt from 'react-parallax-tilt'
 import { BoltIcon, RadioIcon, ShieldCheckIcon } from '@heroicons/react/24/outline'
+import { usePlayersOnline } from '../hooks/usePlayersOnline'
 
 const serverIp = '5.9.151.150:2402'
 
-const stats = [
-  { label: 'Supervivientes activos', value: '120+', sub: 'Promedio diario', icon: ShieldCheckIcon },
+const staticStats = [
   { label: 'Eventos semanales', value: '4', sub: 'PVE / PVP mixto', icon: BoltIcon },
   { label: 'Zonas mutantes', value: '8', sub: 'Rotación dinámica', icon: RadioIcon },
 ]
 
+
 const transmissions = [
   { time: '01:12', content: 'Búnker Helheim sellado. Detección de gas rojo. Usa filtros NV-T3.' },
-      { time: '02:47', content: 'Trader clandestino moviendo stock a “Cicatriz Roja”. Señal débil.' },
-      { time: '04:05', content: 'Tormenta química rumbo a Elektrozavodsk. Evita techos abiertos.' },
-      { time: '05:22', content: 'Quimera Alfa triangulada en bosque norte. Señuelo auditivo recomendado.' },
+  { time: '02:47', content: 'Trader clandestino moviendo stock a “Cicatriz Roja”. Señal débil.' },
+  { time: '04:05', content: 'Tormenta química rumbo a Elektrozavodsk. Evita techos abiertos.' },
+  { time: '05:22', content: 'Quimera Alfa triangulada en bosque norte. Señuelo auditivo recomendado.' },
 ]
+
 
 const rituals = [
   {
@@ -27,7 +29,7 @@ const rituals = [
   {
     title: 'Domingo Sangriento',
     tag: 'PVP Controlado',
-    text: 'Hotspot rotativo con extracción obligatoria. Última patrulla mantiene el botín.',
+    text: 'Hotspot rotativo con extracción obligatoria. La última patrulla mantiene el botín.',
   },
   {
     title: 'Anomalía Aurora',
@@ -36,8 +38,10 @@ const rituals = [
   },
 ]
 
+
 export function HomePage() {
   const [copied, setCopied] = useState(false)
+  const { value: playersOnline } = usePlayersOnline()
 
   const copyIp = async () => {
     try {
@@ -96,7 +100,36 @@ export function HomePage() {
         </Tilt>
 
         <aside className="space-y-4">
-          {stats.map((stat) => (
+          <Tilt tiltMaxAngleX={8} tiltMaxAngleY={8} glareEnable glareMaxOpacity={0.2} className="rounded-3xl">
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="flex items-center gap-4 rounded-3xl border border-white/10 bg-black/60 p-4"
+            >
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
+                <ShieldCheckIcon className="h-6 w-6 text-emerald-400" />
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-[0.35em] text-slate-400">Supervivientes activos</p>
+                <div className="flex items-baseline gap-3">
+                  <div className="font-display text-3xl text-white">
+                    {playersOnline ?? '—'}
+                  </div>
+                  <div className="flex items-center gap-1 text-xs text-emerald-300 uppercase tracking-[0.4em]">
+                    <span className="relative flex h-2.5 w-2.5">
+                      <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
+                      <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
+                    </span>
+                    Live
+                  </div>
+                </div>
+                <p className="text-xs text-slate-400">Actualiza cada 20s</p>
+              </div>
+            </motion.div>
+          </Tilt>
+
+          {staticStats.map((stat) => (
             <Tilt tiltMaxAngleX={8} tiltMaxAngleY={8} glareEnable glareMaxOpacity={0.2} key={stat.label} className="rounded-3xl">
               <motion.div
                 initial={{ opacity: 0, x: 40 }}
@@ -169,3 +202,8 @@ export function HomePage() {
     </div>
   )
 }
+
+
+
+
+

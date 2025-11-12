@@ -9,21 +9,23 @@ export function CinematicBackground() {
     if (!video) return
 
     const play = () => video.play().catch(() => {})
-    let handler: (() => void) | null = null
+    let listener: (() => void) | null = null
+
     if (video.readyState >= 2) {
       play()
     } else {
-      const listener = () => {
+      listener = () => {
         play()
-        video.removeEventListener('canplay', listener)
+        if (listener) {
+          video.removeEventListener('canplay', listener)
+        }
       }
-      handler = listener
       video.addEventListener('canplay', listener)
     }
 
     return () => {
-      if (handler) {
-        video.removeEventListener('canplay', handler)
+      if (listener) {
+        video.removeEventListener('canplay', listener)
       }
       video.pause()
     }
