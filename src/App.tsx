@@ -7,6 +7,9 @@ import { ZonesPage } from './pages/Zones'
 import { ArsenalPage } from './pages/Arsenal'
 import { IntelPage } from './pages/Intel'
 import { DonationsPage } from './pages/Donations'
+import { NewsPage } from './pages/News'
+import { ShopPage } from './pages/Shop'
+import { StreamsPage } from './pages/Streams'
 import { CinematicBackground } from './components/CinematicBackground'
 import { AmbientAudioToggle } from './components/AmbientAudioToggle'
 import { IntroOverlay } from './components/IntroOverlay'
@@ -15,6 +18,9 @@ import soundtrack from './assets/media/musicafondo.mp3'
 
 const tabs = [
   { label: 'Inicio', path: '/' },
+  { label: 'Noticias', path: '/noticias' },
+  { label: 'Tienda', path: '/tienda' },
+  { label: 'Streams', path: '/streams' },
   { label: 'Zonas', path: '/zonas' },
   { label: 'Arsenal', path: '/arsenal' },
   { label: 'Donaciones', path: '/donaciones' },
@@ -128,7 +134,7 @@ export default function App() {
           </div>
 
           <div className="flex flex-col gap-4 md:items-end">
-            <nav className="flex flex-wrap items-center gap-2">
+            <nav className="flex gap-2 overflow-x-auto pb-2 text-nowrap md:flex-wrap md:overflow-visible">
               {tabs.map((tab) => (
                 <NavLink
                   key={tab.path}
@@ -176,6 +182,9 @@ export default function App() {
           >
             <Routes location={location}>
               <Route path="/" element={<HomePage />} />
+              <Route path="/noticias" element={<NewsPage />} />
+              <Route path="/tienda" element={<ShopPage />} />
+              <Route path="/streams" element={<StreamsPage />} />
               <Route path="/zonas" element={<ZonesPage />} />
               <Route path="/arsenal" element={<ArsenalPage />} />
               <Route path="/donaciones" element={<DonationsPage />} />

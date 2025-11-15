@@ -10,32 +10,90 @@ const ShieldIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 const zones = [
   {
-    title: 'Cúpula PVE',
-    tag: 'Sector seguro',
+    title: 'Bunkeres anómalos',
+    tag: 'Zona PVP',
     icon: ShieldIcon,
-    description: 'Clusters vigilados por torretas, ideal para traders y reparación de gear. Eventos cooperativos sorpresa.',
-    perks: ['Torretas anti-bandido', 'Misiones cooperativas', 'Farm controlado'],
+    description:
+      'Bunkeres casi a oscuras. Si no llevas linterna, date por perdido. Loot militar y cajas que solo se abren con llave. Territorio PVP.',
+    perks: ['Loot militar raro', 'Llaves secretas', 'Ambiente opresivo'],
   },
   {
-    title: 'Frontera Hostil',
-    tag: 'Zona híbrida',
+    title: "Devil's Castle",
+    tag: 'Zona PVE',
     icon: MapIcon,
-    description: 'Pasillos industriales donde PVE y PVP se mezclan. Loot experimental con radiación leve.',
-    perks: ['Tormentas químicas', 'Loot x2', 'NPC renegados'],
+    description:
+      'Criaturas inspiradas en S.T.A.L.K.E.R. patrullan el castillo. Sin calibre pesado, no sales con vida. Busca la caja escondida.',
+    perks: ['Criaturas STALKER', 'Loot excepcional', 'Caja oculta'],
   },
   {
-    title: 'Dominio Sangre',
-    tag: 'PVP libre',
+    title: 'Novodmitrovsk',
+    tag: 'PVP con anomalías',
     icon: FireIcon,
-    description: 'Búnkeres Helheim, Arasaka y Nébula. Sin reglas, radares bloqueados, ventanas de 40 minutos.',
-    perks: ['Loot mítico', 'Detección Quimera', 'Final bosses'],
+    description:
+      'Los bandidos protegen una caja especial. Si te oyen, disparan sin avisar. Anomalías y monstruos se activan con el ruido.',
+    perks: ['Caja de bandidos', 'Monstruos errantes', 'Trampas sonoras'],
+  },
+  {
+    title: 'Castillo Voron / Isla Skalisty',
+    tag: 'PVE extremo',
+    icon: ShieldIcon,
+    description:
+      'Quimeras y mutantes acechan la isla. Mata a las bestias para abrir la caja del castillo y explorar los secretos de la isla.',
+    perks: ['Gran loot oculto', 'Quimeras en manada', 'Eventos sorpresa'],
+  },
+  {
+    title: 'Tissy Military',
+    tag: 'PVP gas',
+    icon: MapIcon,
+    description:
+      'Zona cubierta de gas tóxico. Con la llave adecuada puedes abrir el edificio y llevarte loot enorme, pero todo el mundo sabrá que estás dentro.',
+    perks: ['Gas tóxico', 'PvP asegurado', 'Edificio con llave'],
+  },
+  {
+    title: 'Troitskoe Military',
+    tag: 'PVP abierto',
+    icon: FireIcon,
+    description: 'Full PVP con loot militar de alto nivel. Ideal para practicar asaltos rápidos.',
+    perks: ['Loot militar', 'Acceso sencillo', 'Combates frenéticos'],
+  },
+  {
+    title: 'Krasnostav',
+    tag: 'PvP · atraco',
+    icon: MapIcon,
+    description:
+      'Los ágiles entran al banco, roban el cajero y si tienen la tarjeta negra pueden abrir el edificio. Prepárate para emboscadas.',
+    perks: ['ATM robable', 'Tarjeta negra', 'Zona urbana cerrada'],
+  },
+  {
+    title: 'Airfield',
+    tag: 'Hotspot PVP',
+    icon: FireIcon,
+    description:
+      'La zona más concurrida. Puedes abrir la puerta con tarjeta verde y robar el ATM, pero es donde más actividad PVP hay.',
+    perks: ['Tarjeta verde', 'ATM', 'PvP constante'],
+  },
+  {
+    title: 'Altar',
+    tag: 'PVE quimeras',
+    icon: ShieldIcon,
+    description:
+      'Monstruos y quimeras protegen el edificio. Si logras matarlos y usar la tarjeta violeta, descubrirás un loot único.',
+    perks: ['Tarjeta violeta', 'Quimeras guardianas', 'Loot exótico'],
   },
 ]
 
 const bunkerTimeline = [
-  { name: 'Helheim', detail: 'Circuito eléctrico y sensores térmicos. Requiere llaves NV-β.', status: 'Activo' },
-  { name: 'Arasaka', detail: 'Torres de vigilancia y gas rojo. Solo acceso nocturno.', status: 'Alerta' },
-  { name: 'Nébula', detail: 'Clima interno dinámico, loot científico, NPC renegado.', status: 'Sellado' },
+  { name: 'Bunkeres anómalos', detail: 'Oscuros y llenos de cajas con llave. Lleva linterna y filtros.', status: 'Activo' },
+  {
+    name: "Devil's Castle",
+    detail: 'Criaturas STALKER y cajas que cambian de posición. Resetea semanalmente.',
+    status: 'Infestado',
+  },
+  {
+    name: 'Novodmitrovsk',
+    detail: 'Señal de bandidos abierta. Anomalías auditivas en toda la ciudad.',
+    status: 'Vigilado',
+  },
 ]
 
 const anomalies = [
