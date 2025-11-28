@@ -164,7 +164,7 @@ export function HomePage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4 }}
-                className="rounded-2xl border border-white/5 bg-black/70 p-4 shadow-inner shadow-emerald-500/10"
+                className="rounded-2xl border border-white/5.bg-black/70 p-4 shadow-inner shadow-emerald-500/10"
               >
                 <span className="text-aurora">{log.time}</span> — {log.content}
               </motion.div>
