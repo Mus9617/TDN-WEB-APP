@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import trailerVideo from '../assets/media/trailer.mp4'
+import frostVideo from '../assets/media/static.mp4'
 
 export function CinematicBackground() {
   const videoRef = useRef<HTMLVideoElement | null>(null)
@@ -35,7 +35,7 @@ export function CinematicBackground() {
     <video
       ref={videoRef}
       className="pointer-events-none fixed inset-0 z-0 h-full w-full object-cover"
-      src={trailerVideo}
+      src={frostVideo}
       autoPlay
       muted
       loop

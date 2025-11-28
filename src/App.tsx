@@ -2,11 +2,15 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { NavLink, Route, Routes, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Howl } from 'howler'
+import Snowfall from 'react-snowfall'
 import { HomePage } from './pages/Home'
 import { ZonesPage } from './pages/Zones'
 import { ArsenalPage } from './pages/Arsenal'
 import { IntelPage } from './pages/Intel'
 import { DonationsPage } from './pages/Donations'
+import { NewsPage } from './pages/News'
+import { ShopPage } from './pages/Shop'
+import { StreamsPage } from './pages/Streams'
 import { CinematicBackground } from './components/CinematicBackground'
 import { AmbientAudioToggle } from './components/AmbientAudioToggle'
 import { IntroOverlay } from './components/IntroOverlay'
@@ -15,6 +19,9 @@ import soundtrack from './assets/media/musicafondo.mp3'
 
 const tabs = [
   { label: 'Inicio', path: '/' },
+  { label: 'Noticias', path: '/noticias' },
+  { label: 'Tienda', path: '/tienda' },
+  { label: 'Streams', path: '/streams' },
   { label: 'Zonas', path: '/zonas' },
   { label: 'Arsenal', path: '/arsenal' },
   { label: 'Donaciones', path: '/donaciones' },
@@ -110,6 +117,14 @@ export default function App() {
   return (
     <div className="relative min-h-screen overflow-hidden text-slate-100">
       <CinematicBackground />
+      <Snowfall
+        snowflakeCount={750}
+        speed={[0.5, 2]}
+        radius={[0.5, 4]}
+        wind={[0.5, 10]}
+        color="#dee4fd"
+        style={{ position: 'fixed', inset: 0, width: '100%', height: '100%', zIndex: 12, pointerEvents: 'none' }}
+      />
       <div className="pointer-events-none fixed inset-0 z-10 bg-gradient-to-b from-transparent via-black/30 to-black/60" />
       <IntroOverlay show={showIntro} onEnter={handleIntroEnter} />
 
@@ -128,7 +143,7 @@ export default function App() {
           </div>
 
           <div className="flex flex-col gap-4 md:items-end">
-            <nav className="flex flex-wrap items-center gap-2">
+            <nav className="flex gap-2 overflow-x-auto pb-2 text-nowrap md:flex-wrap md:overflow-visible">
               {tabs.map((tab) => (
                 <NavLink
                   key={tab.path}
@@ -176,6 +191,9 @@ export default function App() {
           >
             <Routes location={location}>
               <Route path="/" element={<HomePage />} />
+              <Route path="/noticias" element={<NewsPage />} />
+              <Route path="/tienda" element={<ShopPage />} />
+              <Route path="/streams" element={<StreamsPage />} />
               <Route path="/zonas" element={<ZonesPage />} />
               <Route path="/arsenal" element={<ArsenalPage />} />
               <Route path="/donaciones" element={<DonationsPage />} />

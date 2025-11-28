@@ -7,37 +7,34 @@ import { usePlayersOnline } from '../hooks/usePlayersOnline'
 const serverIp = '5.9.151.150:2402'
 
 const staticStats = [
-  { label: 'Eventos semanales', value: '4', sub: 'PVE / PVP mixto', icon: BoltIcon },
-  { label: 'Zonas mutantes', value: '8', sub: 'Rotación dinámica', icon: RadioIcon },
+  { label: 'Purga Cada 2 Domingos', value: '2', sub: 'PVP Todo EL Mapa', icon: BoltIcon },
+  { label: 'Zonas PVE/PVP Con Mutantes', value: '13', sub: 'Rotación dinámica', icon: RadioIcon },
 ]
-
 
 const transmissions = [
-  { time: '01:12', content: 'Búnker Helheim sellado. Detección de gas rojo. Usa filtros NV-T3.' },
-  { time: '02:47', content: 'Trader clandestino moviendo stock a “Cicatriz Roja”. Señal débil.' },
+  { time: '01:12', content: 'Búnker TDN sellado. Detección de gas rojo. Usa filtros NV-T3.' },
+  { time: '02:47', content: 'Helicoptero Estrellado. Señal débil.' },
   { time: '04:05', content: 'Tormenta química rumbo a Elektrozavodsk. Evita techos abiertos.' },
-  { time: '05:22', content: 'Quimera Alfa triangulada en bosque norte. Señuelo auditivo recomendado.' },
+  { time: '05:22', content: 'Quimera Alfa triangulada en bosque norte. Señuelo auditivo recomendado. Devil Castle' },
 ]
-
 
 const rituals = [
   {
-    title: 'Rito de Ceniza',
-    tag: 'PVE Hostil',
-    text: 'Laboratorios infestados que liberan mutaciones si fallas en menos de 10 minutos.',
+    title: 'Lore',
+    tag: 'PVE Hostil /PVP',
+    text: 'Lore Sobre El Escuadorn de TDN Con Recompensas Exculsivas',
   },
   {
     title: 'Domingo Sangriento',
     tag: 'PVP Controlado',
-    text: 'Hotspot rotativo con extracción obligatoria. La última patrulla mantiene el botín.',
+    text: 'Cada Domiingo Purga Total Todo el Mapa PVP y las bases Raid Raideables.',
   },
   {
-    title: 'Anomalía Aurora',
-    tag: 'Mundo Vivo',
-    text: 'Tormentas que deforman el loot y abren rutas breves hacia bunkeres ocultos.',
+    title: 'Bunkerer Anomalía ',
+    tag: 'PVP',
+    text: 'Descubre El Mundo Subterraneo de los Bunkeres TDN y Consigue tu mejor loot.',
   },
 ]
-
 
 export function HomePage() {
   const [copied, setCopied] = useState(false)
@@ -54,7 +51,7 @@ export function HomePage() {
   }
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-12">
       <motion.section
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -62,39 +59,39 @@ export function HomePage() {
         className="grid gap-8 lg:grid-cols-[1.4fr,0.6fr]"
       >
         <Tilt tiltMaxAngleX={6} tiltMaxAngleY={6} glareEnable glareMaxOpacity={0.25} className="rounded-3xl">
-          <article className="relative overflow-hidden rounded-3xl border border-white/10 bg-black/50 p-8 backdrop-blur-xl">
+          <article className="frost-panel relative overflow-hidden rounded-3xl border border-white/10 bg-black/50 p-8 backdrop-blur-xl">
             <div className="absolute -left-14 -top-14 h-48 w-48 rounded-full bg-radar opacity-40 blur-3xl" />
             <div className="relative">
-            <p className="text-xs uppercase tracking-[0.45em] text-slate-400">Servidor hispano · DayZ</p>
-            <h2 className="mt-4 font-display text-5xl uppercase leading-[1.1]">
-              PVE seguro.
-              <br />
-              PVP despiadado.
-            </h2>
-            <p className="mt-4 max-w-2xl text-lg text-slate-200">
-              Tierra de Nadie combina Quimeras, traders clandestinos y bunkeres vivos. Cada amanecer cambia las reglas.
-              Elige entre zonas vigiladas o arrástrate por territorios mutantes con recompensa triple.
-            </p>
+              <p className="text-xs uppercase tracking-[0.45em] text-slate-400">Servidor hispano · DayZ</p>
+              <h2 className="mt-4 font-display text-5xl uppercase leading-[1.1]">
+                PVE seguro.
+                <br />
+                PVP despiadado.
+              </h2>
+              <p className="mt-4 max-w-2xl text-lg text-slate-200">
+                Tierra de Nadie combina Quimeras, traders clandestinos y bunkeres vivos. Cada amanecer cambia las reglas.
+                Elige entre zonas vigiladas o arrástrate por territorios mutantes con recompensa triple.
+              </p>
 
-            <div className="mt-6 flex flex-wrap items-center gap-4 rounded-2xl border border-white/5 bg-white/5 p-4">
-              <div>
-                <p className="text-xs uppercase tracking-[0.4em] text-slate-400">Connect ahora</p>
-                <div className="mt-2 flex items-center gap-3">
-                  <code className="rounded-lg bg-black/70 px-3 py-1.5 font-mono text-base text-aurora">{serverIp}</code>
-                  <button
-                    onClick={copyIp}
-                    className="rounded-full border border-aurora/50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-aurora transition hover:bg-aurora/20"
-                  >
-                    {copied ? 'Copiado' : 'Copiar'}
-                  </button>
+              <div className="mt-6 flex flex-wrap items-center gap-4 rounded-2xl border border-white/5 bg-white/5 p-4">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.4em] text-slate-400">Connect ahora</p>
+                  <div className="mt-2 flex items-center gap-3">
+                    <code className="rounded-lg bg-black/70 px-3 py-1.5 font-mono text-base text-aurora">{serverIp}</code>
+                    <button
+                      onClick={copyIp}
+                      className="rounded-full border border-aurora/50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-aurora transition hover:bg-aurora/20"
+                    >
+                      {copied ? 'Copiado' : 'Copiar'}
+                    </button>
+                  </div>
+                </div>
+                <div className="ml-auto text-right">
+                  <p className="text-xs uppercase tracking-[0.4em] text-slate-400">Wipe</p>
+                  <p className="font-display text-2xl text-ember">Cada Actualicacion</p>
+                  <p className="text-xs text-slate-400">Eventos sorpresa mid-week</p>
                 </div>
               </div>
-              <div className="ml-auto text-right">
-                <p className="text-xs uppercase tracking-[0.4em] text-slate-400">Wipe</p>
-                <p className="font-display text-2xl text-ember">Cada 14 días</p>
-                <p className="text-xs text-slate-400">Eventos sorpresa mid-week</p>
-              </div>
-            </div>
             </div>
           </article>
         </Tilt>
@@ -105,7 +102,7 @@ export function HomePage() {
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="flex items-center gap-4 rounded-3xl border border-white/10 bg-black/60 p-4"
+              className="frost-panel flex items-center gap-4 rounded-3xl border border-white/10 bg-black/60 p-4"
             >
               <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
                 <ShieldCheckIcon className="h-6 w-6 text-emerald-400" />
@@ -113,9 +110,7 @@ export function HomePage() {
               <div>
                 <p className="text-xs uppercase tracking-[0.35em] text-slate-400">Supervivientes activos</p>
                 <div className="flex items-baseline gap-3">
-                  <div className="font-display text-3xl text-white">
-                    {playersOnline ?? '—'}
-                  </div>
+                  <div className="font-display text-3xl text-white">{playersOnline ?? '—'}</div>
                   <div className="flex items-center gap-1 text-xs text-emerald-300 uppercase tracking-[0.4em]">
                     <span className="relative flex h-2.5 w-2.5">
                       <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
@@ -135,7 +130,7 @@ export function HomePage() {
                 initial={{ opacity: 0, x: 40 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
-                className="flex items-center gap-4 rounded-3xl border border-white/10 bg-black/60 p-4"
+                className="frost-panel flex items-center gap-4 rounded-3xl border border-white/10 bg-black/60 p-4"
               >
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
                   <stat.icon className="h-6 w-6 text-ember" />
@@ -157,7 +152,7 @@ export function HomePage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="rounded-3xl border border-white/10 bg-black/50 p-6"
+          className="frost-panel rounded-3xl border border-white/10 bg-black/50 p-6"
         >
           <p className="text-xs uppercase tracking-[0.4em] text-slate-500">transmisiones</p>
           <h3 className="mt-3 font-display text-3xl uppercase">Últimas señales</h3>
@@ -183,7 +178,7 @@ export function HomePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="rounded-3xl border border-white/10 bg-gradient-to-br from-black/70 via-black/40 to-ember/20 p-6"
+            className="frost-panel rounded-3xl border border-white/10 bg-gradient-to-br from-black/70 via-black/40 to-ember/20 p-6"
           >
             <p className="text-xs uppercase tracking-[0.4em] text-slate-500">rituales</p>
             <h3 className="mt-3 font-display text-3xl uppercase">Eventos climáticos</h3>
@@ -202,8 +197,3 @@ export function HomePage() {
     </div>
   )
 }
-
-
-
-
-

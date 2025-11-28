@@ -29,6 +29,7 @@
     "react-dom": "^19.2.0",
     "react-parallax-tilt": "^1.7.313",
     "react-router-dom": "^7.9.5",
+    "react-snowfall": "^2.3.0",
     "react-tsparticles": "^2.12.2",
     "three": "^0.181.1",
     "tsparticles-engine": "^2.12.0",
